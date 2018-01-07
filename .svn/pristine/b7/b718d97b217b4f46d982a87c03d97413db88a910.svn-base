@@ -1,0 +1,22 @@
+package cn.itcast.file.dao.impl;
+
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.Query;
+
+import cn.itcast.core.dao.BaseDaoImpl;
+import cn.itcast.file.dao.FileDao;
+import cn.itcast.file.entity.FileResource;
+import cn.itcast.file.entity.UserFile;
+
+public class FileDaoImpl extends BaseDaoImpl<UserFile> implements FileDao{
+
+	
+	@SuppressWarnings("unchecked")
+	public List<UserFile> getFileByUserid(String user) {
+		String hql = "FROM UserFile WHERE user = " +" '"+user+"' ";
+		Query query = getSession().createQuery(hql);		
+		return query.list();
+	}
+}

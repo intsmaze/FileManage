@@ -1,0 +1,362 @@
+/* CSS Document */
+body,dl,ol,ul,li,dt,dd,p,h2,h3,h4{margin:0;padding:0;list-style:none;-webkit-text-size-adjust:none}
+body{font:12px/1.2 Arial, Tahoma, "宋体", sans-serif;color:#333;}
+a{color:#0000cc;text-decoration:none} 
+a:hover { color:#FF0000; text-decoration:underline;} 
+img {border:none; vertical-align:middle;}
+select,input{font:100% Tahoma,Helvetica,Arial,sans-serif}
+.hc{display:none}.sc{display:block}body,.f12{font-size:12px}
+.c{ height:0px; font-size:0;clear:both; overflow:hidden}
+.tac{text-align:center}.cb,#footer{margin:0 auto;clear:both;overflow:hidden;background:#fff}
+.cb{margin-bottom:40px}
+#footer p {text-align:center; line-height:24px; border-top:1px solid #ccc; padding-top:10px; font-size:12px}
+.left{ float:left;}
+.win1000{ width:1000px;}
+.win900{ width:924px;}
+.tel-r-10{ margin-right:10px!important;}
+a.fduihua{background:url(https://passport.58.com/pic2/ui6/index/bgpic.gif) no-repeat right -505px; padding-right:22px; margin-left:5px;}
+.inp {border:1px solid #C8C8C8;height:30px;line-height:2;margin-right:3px;padding:0 3px;vertical-align:middle}
+.loginbox{font:12px/3 Tahoma,Helvetica,Arial,'宋体',sans-serif;padding:0px 0 20px;}
+#password{border:1px solid #C8C8C8;height:30px;line-height:2;margin-right:3px;padding:0 3px;vertical-align:middle;width:228px;}
+#confirm_password{border:1px solid #C8C8C8;height:30px;line-height:2;margin-right:3px;padding:0 3px;vertical-align:middle;width:228px;}
+#email{border:1px solid #C8C8C8;height:30px;line-height:2;margin-right:3px;padding:0 3px;vertical-align:middle;width:228px;}
+#account{border:1px solid #C8C8C8;height:30px;line-height:2;margin-right:3px;padding:0 3px;vertical-align:middle;width:228px;}
+.loginbox table{ border-collapse:collapse; border:none; width:100%;}
+.loginbox table th{padding-right:10px;text-align:right; font-size:14px;width:53px; color:#666; font-weight:normal; vertical-align:text-top;}
+.loginbox table td{ padding:8px 0 0px 0;}
+.logintip{ width:auto!important; padding:0; font-size:12px!important; line-height:20px!important;}
+.inw {width:228px;}.inw2,#authcode{ width:76px; width:76px\0;  *width:73px; _width:73px;}
+.inw3,#authcode{ width:50px; }
+.btn_reg {width:212px; height:32px;  background:url(https://passport.58.com/pic2/n/images/other/but_reg.gif) no-repeat; border:none;}
+.pdt10 {padding-top:10px;}.c_ccc{color:#ccc}.pb20{ padding-bottom:10px;}
+.fgrey {color:#666; font-size:12px} .red{ color:#f00}
+.fred {color:#ff0508;} .fgreen {color:#009900;} .fora {color:#FF9933;} .flv {color:#B8D96A;}
+.chenggong{ display:inline-block; height:16px; background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) 0 -22px no-repeat; padding-left:25px; vertical-align:middle; padding-right:5px;}
+.v_false{ display:inline-block; height:23px; background:#ffc6c6 url(https://passport.58.com/pic2/n/images/post/background.gif) no-repeat -158px -163px; padding-left:30px; vertical-align:middle; padding-right:5px;}
+
+.chenggong1, .action1, .wrong1 { display:inline-block; vertical-align:top; padding-right:5px; font-size:12px; color:#000; position:relative; padding-left:40px}
+.chenggong1{ width:19px; height:24px; background:url(https://passport.58.com/pic2/n/images/post/background.gif) no-repeat -162px -75px;}
+.action1,.wrong1{ width:247px; height:20px; padding-top:3px; background:url(https://passport.58.com/pic2/ui6/my/images/verification-ui6.gif) no-repeat 0 0;}
+.action1 a,.wrong1 a{ position:relative; _top:2px; margin:0 2px; }
+.action1{ background:url(https://passport.58.com/pic2/ui6/my/images/verification-ui6.gif) no-repeat 0 0;}
+.action1 .action_po,.wrong1 .action_po{ position:absolute; left:0; top:0;}
+.action1 .action_po_top{display:block;width:237px;padding:3px 10px 0 40px;min-height:10px;_height:10px; background:url(https://passport.58.com/pic2/ui6/my/images/verification-ui6.gif) no-repeat 0px 0;}
+.action1 .action_po_bot{display:block;width:287px;height:5px;background:url(https://passport.58.com/pic2/ui6/my/images/verification-ui6.gif) no-repeat 0px -185px;overflow:hidden;}
+.action_color{ border:1px solid #1d95f6;  background:#feffe3 url(https://passport.58.com/pic2/ui6/my/images/inw-bg.gif) left top repeat-x;}
+.wrong1{ background:url(https://passport.58.com/pic2/ui6/my/images/verification-ui6.gif) no-repeat 0 -190px;}
+.wrong1 .action_po_top{ display:block; width:237px; padding:4px 10px 0 40px; min-height:10px; _height:10px; background:url(https://passport.58.com/pic2/ui6/my/images/verification-ui6.gif) no-repeat 0px -190px;}
+.wrong1 .action_po_bot{ display:block; width:287px; height:5px; background:url(https://passport.58.com/pic2/ui6/my/images/verification-ui6.gif) no-repeat 0px -375px; overflow:hidden;}
+.wrong_color{  border:1px solid #ff9a9a; background:#feffe3 url(https://passport.58.com/pic2/ui6/my/images/inw-bg.gif) left top repeat-x;}
+/* header */
+#header{ height:79px; border-bottom:#dbe0e3 1px solid; margin: 0 auto; position:relative; overflow:hidden; }
+#login-header{ height:80px; border:none; margin: 0 auto; position:relative; overflow:hidden;}
+#logo,#cityname,#logintext{position:absolute}
+#headerinside{background:url(https://passport.58.com/pic2/n/images/h_bg.gif) repeat-x;height:60px}
+#logo{left:20px;top:17px;}
+#logo img{ display:block;}
+#cityname{  height:39px;border-left:#eaeaea 1px solid; top:24px;left:200px; padding-left:15px;}
+#cityname span{font:24px/1.8 "微软雅黑","黑体", sans-serif; color:#666;}
+#login{ position:absolute; right:160px;top:50px;}
+#logintext{right:10px; top:50px; color:#666;}
+#logintext a{margin:0 14px; color:#666;}
+#logintext a:hover{ color:#ff0000; text-decoration:underline;}
+
+/*登录注册*/
+.tbl_login {margin:30px 0; }
+.tbl_login td {line-height:28px; font-size:14px; color:#000;}
+.tbl_login td.fblk, .fblk p {color:#000;}
+#syxy{font-family:"宋体"Arial;}
+#syxy span{ _position:relative; _top:-1px}
+.xiy {width:521px; background:#f1f1f1; border:1px solid #ccc; padding:8px; display:inline-block}
+.lgbox {width:160px; margin-left:20px; padding:20px 10px; margin-bottom:10px;}
+.tarea {width:501px; *width:503px; height:120px; padding:8px; font-size:13px; line-height:18px;}
+.bt{ padding:20px 0 40px 50px; width:450px; background:url(https://passport.58.com/pic2/n/images/grzx/zccg.gif) no-repeat 0px 16px; font-weight:bold; height:28px; line-height:28px; overflow:hidden; font-size:20px; color:#479D06}
+.mima_a,.mima_b,.mima_c,.mima_d {width:90px; height:6px; border:1px solid #ccc; padding:1px; line-height:1%; font-size:1%;}
+.porleft .mima_a p,.porleft .mima_b p,.porleft .mima_c p,.porleft .mima_d p { height:6px; font-size:1%; line-height:1%; padding:0;}
+.mima_a p {width:25%;background:#FF3300;}
+.mima_b p {width:50%; background:#FF9933; }
+.mima_c p {width:75%; background:#B8D96A; }
+.mima_d p {width:100%; background:#009933;}
+.warn{ background:url(https://passport.58.com/pic2/n/images/other/warn.gif) no-repeat 0 40px; padding:46px 0 15px 40px; font-size:18px; font-weight:bold; color:#f00}
+.tel-tip{ line-height:20px; font-size:12px; }
+.tel-tip strong{ height:18px; background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) 0 4px no-repeat; padding:0 0 0 20px; margin:0 0 12px 0; clear:both; display:block;}
+.tel-tip span.red{  font-weight:bold;}
+.tel-tip b.red{ font-size:16px; line-height:2;}
+.tel-tip span.gray{ color:#ccc;  display:block; }
+ul.login-scrool{ height:37px;}
+ul.login-scrool li{ display:block; float:left; width:157px; position:relative; line-height:35px;  height:35px; border:#dbe0e3 1px solid; background-color:#f9f9f9; font-size:14px; color:#999;  cursor:pointer; text-align:center;  font-weight:bold;}
+ul.login-scrool li#scrool1{  border-right:none;}
+ul.login-scrool li#scrool1 em{ background-color:#efefef; height:35px;  height:37px\0;  *height:35px; _height:35px; width:2px; position:absolute; right:0; _right:-1px; top:0px;}
+ul.login-scrool li#scrool2{  border-left:none;}
+ul.login-scrool li#scrool2 em{ background-color:#efefef; height:35px; width:2px; position:absolute; left:0; top:0px;}
+ul.login-scrool li.hover{ height:37px; margin-top:-2px; border-left:#dbe0e3 1px solid!important; border-top:#85d158 2px solid; border-right:#dbe0e3 1px solid!important; border-bottom:none; color:#000; background-color:#fff; } 
+ul.login-scrool li.hover em{ background:#fff!important;}
+.link-login{ padding:10px 0 0 12px; border-top:#ececec 1px solid;}
+.link-login span.lots { display:block; line-height:22px; color:#666;  }
+.loico { background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) no-repeat;padding:2px 24px 1px 20px;  border-right:1px solid #e1e1e1;}
+.loico-b{ border:none;}
+#lo_sina {background-position:0 -207px;background-position:0 -208px\0; *background-position:0 -208px; _background-position:0 -208px; margin-left:10px;padding-right:14px;}
+#lo_qq {background-position:0 -236px; padding-right:28px;}
+#lo_kxw {background-position:0 -279px; _background-position:0 -281px; padding-right:0;}
+#lo_renren {background-position:0 -307px; padding-right:11px;margin-left:10px;}
+#lo_taobao {background-position:0 -409px; *background-position:0 -410px; padding-right:10px;}
+#lo_139{ background-position:0 -508px;  padding-right:17px;margin-left:10px;}
+#lo_baidu{ background-position:0 -784px;  padding-right:38px;_padding-right:36px;margin-left:10px;}
+#lo_msn{ background-position:0 -542px; padding-right:0; }
+#lo_feixin{ background-position:0 -688px;padding-right:22px;}
+#lo_pay{ background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) no-repeat;background-position:0 -734px;margin-left:10px;}
+p.reg-tip{ width:614px; padding:10px 0 0 20px !important; color:#666; background:url(https://passport.58.com/pic2/ui6/my/images/reg-line2.gif) top repeat-x; margin:20px 30px 0 0; position:relative; }
+span.reg-tip-icon{ position:absolute; left:0; top:16px; display:block; width:12px; height:13px; background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) 0 0 no-repeat; margin:0px 5px 0 0;}
+p.reg-tip a{ margin:0 4px; }
+p.tip-a a{ margin:0 30px 0 0; }
+.password-tip{ width:614px; padding:0px 0 10px 0px !important;color:#666; margin:0px 30px 20px 0; line-height:2; }
+.password-tip h2{ height:43px;  font:25px/1.7 "微软雅黑","黑体", sans-serif; position:relative; color:#009900; padding:0 0 0 60px; margin:0 0 10px 0; }
+.password-tip h2 span.password-tip-icon{ position:absolute; left:0; top:0px; display:block; width:42px; height:43px; background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) 0 -49px no-repeat; margin:0px 5px 0 0;}
+.password-tip a{ margin:0 4px; }
+p.reg-tip-2{ width:614px; padding:0px 0 10px 20px !important; color:#666; margin:0px 30px 10px 0; position:relative; }
+span.reg-tip2-icon{ position:absolute; left:0;  top:7px; top:5px\0;  *top:5px; _top:5px; display:block; width:12px; height:13px; background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) 0 0 no-repeat; margin:0px 5px 0 0;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {span.reg-tip2-icon{ top:6px; } } 
+p.reg-tip-3{ color:#666; background-color:#ffffe0; border:#f4e394 1px solid; color:#ff0000; padding:6px 10px; margin-top:34px; }
+strong.b-n{ font-size:16px; line-height:1.8;}
+p.reg-tip2 a{ margin:0 4px; }
+p.tip2-a a{ margin:0 30px 0 0; }
+ul.password-scrool{ background:url(https://passport.58.com/pic2/ui6/my/images/password-scrool-bg.gif) bottom repeat-x; height:27px; padding:0 0 0 10px; margin:0 30px 0 0;}
+ul.password-scrool li{ float:left; display:block; margin:0 4px 0 0; cursor:pointer; width:166px; height:27px; line-height:27px; text-align:center; background:url(https://passport.58.com/pic2/ui6/my/images/password-menu.gif) 0 100% no-repeat; color:#0000cc; font-size:12px;}
+ul.password-scrool li.hover{ background-position:0 0; font-weight:bold; color:#000;}
+.passwordbox{ padding:20px 10px;}
+
+.reg-sucess{ width:660px; padding:40px 0 0px 0px; margin:0 auto ; position:relative; color:#666; line-height:2; font-size:14px; }
+.reg-sucess h2{ height:43px;  font:25px/1.7 "微软雅黑","黑体", sans-serif;color:#009900; position:relative;padding:0 0 0 55px; margin:0 0 30px 0; }
+.reg-sucess h2 span.reg-sucess-icon{ position:absolute; left:0; top:0px; display:block; background:url(https://passport.58.com/pic2/ui6/my/images/reg-ok.png) 0 0 no-repeat; width:39px; height:39px; overflow:hidden; margin:0px 5px 0 0;}
+
+.reg-sucess strong{ margin:0 4px; }
+.reg-sucess b{ margin:0 40px 0 0;}
+.renzheng{ margin-top:30px;}
+.renzheng table{ border:none;font-size:14px;width:100%; border-collapse:collapse;  z-index:8;}
+.renzheng th{font-weight:lighter; width:110px;text-align:right; padding-right:0px; color:#666;}
+.renzheng td strong{ font-size:16px; line-height:1.8;}
+.renzheng td p.f{ font-size:14px; padding:0 30px 0 0;}
+.renzheng td{vertical-align:top; padding:6px 0; margin:0; color:#000; }
+.yanzhen-email{ padding:0 0 0 56px;}
+.yanzhen-email p{ margin:0; padding:0;}
+.yanzhen-email p a{ font-size:14px; margin-right:5px;}
+/*2011-7-26*/
+.renzheng td strong,.yanzhen-email p strong{color:#404040; font-size:18px; line-height:100%}
+.yanzhen-email p strong{font-size:14px}
+.greyc{color:#696969}
+.yanzhen-email p,.yanzhen-email p a{ font-size:12px; line-height:30px}
+.fb_but,.my_but{background:url(https://passport.58.com/pic2/ui6/my/images/reg-ok.png) no-repeat -40px -29px; width:132px; height:28px; line-height:28px; font-size:14px; color:#666; font-weight:bold; text-align:center; margin-right:10px; display:inline-block; margin-bottom:2px; overflow:hidden}
+.fb_but{background-position:-40px 0; color:#fff}
+.fb_but:hover{color:#fff}.my_but:hover{color:#666}
+.yanzhen-email p.pbut a{font-size:14px}
+/* 2010-1-14 房产版网邻通发布成功 */
+.f16{ font-size:16px;}
+.kftel {position:absolute;top:30px;	right:20px;}
+.yanzheng {	display:inline-block;margin-right:35px;}
+/* icon */
+.icon1,.icon2,.icon3,.icon4,.icon5,.icon6,.icon1_b,.icon2_b,.icon3_b,.icon4_b,.icon6_b{ background-image:url(https://passport.58.com/pic2/n/images/txbackground.gif);display:inline-block;vertical-align:middle}
+.icon1{background:url() no-repeat -6px -153px;width:25px; height:20px}
+.icon2{background:url() no-repeat -5px -187px;width:25px; height:20px }
+.icon3{background:url() no-repeat -7px -222px;width:25px; height:20px }
+.icon4{background:url() no-repeat -7px -256px;width:25px; height:20px }
+.icon5{background:url() no-repeat -7px -292px;width:25px; height:20px}
+.icon6{background:url() no-repeat -7px -328px;width:36px; height:23px }
+.icon1_b{background:url() no-repeat -68px -153px;width:25px; height:20px }
+.icon2_b{background:url() no-repeat -67px -187px;width:25px; height:20px }
+.icon3_b{background:url() no-repeat -68px -222px;width:25px; height:20px }
+.icon4_b{background:url() no-repeat -68px -257px;width:25px; height:20px }
+.icon6_b{background:url() no-repeat -69px -328px;width:36px; height:23px }
+#conleft{width:600px;height:380px; float:left; padding:42px 0 0 0px; overflow:hidden; position:relative}
+#login-welcome-bg{width:600px;height:380px; background:url(https://passport.58.com/pic2/ui6/my/images/login-2012217.jpg) no-repeat;}
+#login-welcome-bg-ad{width:600px;height:380px; background:url(https://passport.58.com/pic2/ui7/my/login-2013130.png) no-repeat;}
+
+#conright{width:317px; float:right; background:url(https://passport.58.com/pic2/ui6/my/images/conright-bbg.gif)  bottom no-repeat;line-height:30px;margin-top:42px; position:relative; padding:0 0 26px 0; }
+.scrool-bg{ background:url(https://passport.58.com/pic2/ui6/my/images/conright-bg.gif) repeat-y;  padding:30px 20px 10px; position:relative; width:277px; }
+.scrool-bg span.reg-a { color:#ccc; margin-left:5px; }
+.scrool-bg span.reg-a a{ color:#666; margin:0 4px;}
+.butt,.xybutt{padding-right:1px;display:inline-block; font-weight:700;background:url(https://passport.58.com/pic2/ui6/my/images/reg-btn.gif) right top no-repeat;height:34px;}
+.loginbox .butt{*top:8px; float:left; margin-right:5px;}
+.btns,.xybtn{ padding:6px 20px 7px 20px; padding:10px 18px 6px 18px\0;  *padding:8px 10px 7px 10px; _ padding:6px 10px 7px 10px; display:block;background:url(https://passport.58.com/pic2/ui6/my/images/reg-btn.gif) no-repeat;border:none; color:#fff;font-size:14px; font-weight:bold;cursor: pointer; margin:0}
+@media screen and (-webkit-min-device-pixel-ratio:0) {.btns,.xybtn{padding:8px 20px 8px 20px;} } 
+
+.fblj a{text-decoration:underline; font-size:16px}
+.xybutt{background:url(https://passport.58.com/pic2/n/images/other/resyxbut.gif) #fff no-repeat right 0; color:#aca899;}
+.xybtn{background:url(https://passport.58.com/pic2/n/images/other/resyxbut.gif) #fff no-repeat left 0px;  color:#aca899}
+/**/
+.sendlogin{ float:left; padding:30px 0 0 220px; width:700px; font-size:14px; min-height:450px; _height:450px}
+.sendlogin p{line-height:32px; overflow:hidden;}
+.sendlogin p.bt{line-height:26px}
+.porleft{width:678px;font-size:14px;min-height:400px; _height:400px;margin:46px auto 0;height:438px;float: none;padding-left: 0;padding-top: 0;}
+.porright{width:226px; float:right; padding-left:30px; background:url(https://passport.58.com/pic2/ui6/my/images/reg-line.gif) left repeat-y; min-height:400px; _height:400px; font-size:14px; margin-top:40px}
+.porright a{ margin-left:2px; }
+.porleft p{ padding-top:12px; padding-bottom:12px; line-height:2;}
+.porright p{ line-height:28px;padding-bottom:20px;}
+.porleft .mima_a p,.porleft .mima_b p,.porright .mima_c p,.porright .mima_d p{padding:0;margin:0}
+.porleft .bt{ padding:20px 0 40px 50px;}
+.pawgx{ float:left; width:120px; display:block}
+.pawgx2{ float:left;width:100px; display:block}
+.regtlx{ float:left;width:78px; display:block; color:#666;}
+em.em-tip{ font-style:normal; color:#ccc; font-size:12px;}
+em.mr5{ margin-left:5px;}
+.porleft .pawgxbut{padding-left:120px}
+.porleft .pawgxbut2{padding-left:100px}
+.porright div{margin:0; padding:0}
+#clickdiv{}
+#clickdivpaw{}
+.mid{ background:url(https://passport.58.com/pic2/ui6/my/images/login-tip.gif) no-repeat; padding:0 10px 0 30px;height:33px; width:156px; position:absolute; left:84px; top:2px; }
+.mid .conn{ line-height:28px; overflow:hidden}
+.mid .conn .bigtxt{padding:2px 0 2px 0px; font-weight:bold;color:#C00;line-height:16px;margin-bottom:5px;}
+.mid .conn .stxt{padding-left:20px;line-height:20px;}
+.mid .conn .stxt2{padding-left:2px;line-height:20px;}
+.mid .conn .stxt3{padding-left:15px;line-height:20px;}
+.mid .conn p{padding-top:0px}
+.mid .close{font:16px/1 '黑体';font-weight:700;cursor:pointer;color:#000;position:absolute;top:2px;right:10px}
+#conright .inw { width:190px; font-size:14px;}
+#conright .wrong_color{ border:1px solid #ff9a9a;height:30px;}
+#conright .action_color{ border:1px solid #C8C8C8;height:30px;}
+
+
+#addchoicecity{ margin-left:-4px; *margin-left:-7px;}
+/*认证步骤*/
+.arnav{width:100%; margin-top:20px; overflow:hidden}
+.arnav ul{height:35px; line-height:28px; font-size:14px}
+.arnav li{background:url(https://passport.58.com/pic2/n/images/grzx/rzbz.gif) no-repeat -195px 28px; width:195px; float:left;height:35px; line-height:28px; text-indent:5px; color:#585858}
+.arnav li.select{background:url(https://passport.58.com/pic2/n/images/grzx/rzbz.gif) no-repeat -195px -10px; font-weight:bold; color:#000}
+#arfrist{ background-position:0 28px;text-indent:0px}
+#arfrist.select{ background-position:0 -10px}
+.arnav li a:hover{text-decoration:none}
+.arnav li span{color:#0000cc}
+.p_pl15 p{padding-left:12px}
+
+/*sina*/
+.mysina{width:880px; margin:0 auto}
+.sian11 { width:880px; overflow:hidden; margin:0 auto}
+.tsina{font-size:14px;line-height:25px;margin:30px 20px 30px 0; width:660px; overflow:hidden}
+.tsina td,.tsina th{vertical-align:top; font-size:14px;}
+.tsina dl{text-align:center;width:150px}
+.tsina b{font-weight:bold;color:#000}
+.tsina th{width:160px;text-align:left;border-left:1px solid #e1e1e1}
+.tsina table th{border-left:none}
+.tsina th img{margin-bottom:21px}
+.tsina th dl img{margin:0}
+.dtLine{border-bottom:1px solid #e1e1e1;font-size:0;line-height:0;height:1px;width:620px;margin:20px 80px 10px 0}
+.tsina td{padding:0px 0px 0 0;color:#4F4F4F}
+.tsina td p{padding-top:12px; padding-bottom:12px; line-height:2;}
+.tsina td p i,.tsina td p img{ vertical-align:middle;font-style:normal}
+.tsina td ul li{line-height:26px;margin:10px 0}
+.tsina td ul li input{width:150px;height:23px;border:1px solid #575757;border-color:#575757 #BABABA #BABABA #575757}
+.tsina td ul label{display:block;width:75px;float:left; text-align:right}
+.tsina .btn{background:url(https://passport.58.com/pic2/n/images/grzx/bind.gif) no-repeat; border:0; width:86px; height:30px; overflow:hidden; text-indent:-999px; cursor:pointer;}
+.tsina td li p.tongbu label { display:block}
+.tsina .tongbu{display:block; margin:0; *margin-left:-3px; height:14px; font-size:12px; line-height:15px; margin-top:10px;}
+.tsina li .tongbu{margin-left:75px; *margin-left:56px}
+.tsina .tongbu label{width:auto}
+.tsina .tongbu input{height:auto; width:auto; border:0; margin-right:5px; *margin-right:0}
+.slide_ctl { font-weight:bold}
+.tsina .red { font-size:12px}
+.panel_s .td1{color:#4F4F4F; font-weight:bolder;}
+.panel_s .td1, .panel_s .td2, .panel_s .td3{border-left:0;}
+.panel_s p table td{line-height:24px; margin:0; padding:0}
+.panel_s .mima_a p,.panel_s .mima_b p,.panel_s .mima_c p,.panel_s .mima_d p { height:6px; font-size:1%; line-height:1%; padding:0; margin:0; overflow:hidden}
+.mima_a,.mima_b,.mima_c,.mima_d {margin-top:8px}
+
+/*注册预先下拉提示*/
+.w234{ width:234px;}
+.w234-ui2{ width:234px; padding:0 0 10px;position:relative; font-size:12px; left:78px; _left:81px;border:#ebebeb 1px solid; background-color:#fff;}
+.w234-ui2 p{ padding:5px 4px 5px 10px; color:#666; line-height:1.2;}
+.w234-ui2 p.ui2-key-t{ border:#fff 1px solid; background-color:#fcfcfc; color:#666; }
+.w234-ui2 p.ui2-key-t a{ position:relative; top:-2px; float:right; font-family:Tahoma, Geneva, sans-serif; line-height:13px;_line-height:15px; font-size:18px; display:block; text-align:center; width:16px; height:16px; border:#dbdbdb 1px solid; background-color:#fff; color:#aeaeae; text-decoration:none; }
+.w234-ui2 p.ui2-key-t a:hover{ border:#dbdbdb 1px solid; background-color:#f7f7f7; color:#aeaeae; text-decoration:none;  }
+.w234-ui2 ul{ border-top:#ebebeb 1px solid; font-family:Verdana, Geneva, sans-serif;  }
+.w234-ui2 ul li{ padding:4px 6px;} .w234-ui2 ul li.ybg{ background-color:#ecffe1; }
+.w234-ui2 ul li em{ color:#090; font-style:normal;}
+#reg-keyword i{ position:absolute; display:inline-block; width:13px; height:8px; background:url(../images/psot_6_icon.gif) 0 -273px; left:110px; top:-8px; }
+#reg-keyword{ border:#ebebeb 1px solid; background-color:#fff;}
+#reg-keyword li.reg-keyahover { background-color: #F97D03;  color: #FFFFFF; cursor:pointer; text-decoration: none;}
+#reg-keyword a{ display:block; color:#000; padding:5px 10px;} 
+#reg-keyword a:hover{ background-color:#f97d03; color:#fff; text-decoration:none;}
+#reg-keyword p{ padding:5px 10px; color:#666; line-height:1.2;}
+
+/*注册加手机验证*/
+.porleft p.p2{ color:#333;}
+.porleft p.p2 input{ vertical-align:middle;}
+label.fs-btn,label.fs-btn input{ display:inline-block; background:url(../images/psot_6.gif) no-repeat; border:none;}
+label.fs-btn{ background-position:0 -345px; padding-left:8px; *padding-left:1px; }
+label.fs-btn input{  background-position:right -345px; padding:3px 8px 4px 0; padding:6px 8px 5px 0\0; *padding:4px 0px 4px 0; cursor:pointer;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {label.fs-btn input{ background-position:right -345px; margin:0;  padding:4px 8px 7px 0; } } 
+label.fs-btn-h { font-family:Arial, Helvetica, sans-serif; line-height:22px; *padding-left:1px;}.porleft p.p2 label.fs-btn-h input{ padding-right:0;}
+.porleft p.p2{ padding-top:0; margin-top:-4px; } .porleft p.p2 .chenggong{ padding-left:20px; color:#666; line-height:1.5; margin-left:10px;vertical-align:middle;} 
+.porleft p label.zhmm{ margin-right:10px; color:#666; }.porleft p label.zhmm input{ margin-right:4px;}
+.porleft p span.pl20{ width:98px; display:inline-block; }
+.password-tip label{ margin:0 3px; position:relative; top:0; *top:4px;}
+
+.expired-tip{ background-color:#ffffe0; border:#f5e9ab 1px solid; padding:8px 10px; color:#ff0000; font-weight:bold; margin-top:10px; }
+
+/*leocss*/
+.bangding_pay{background:#fbfbfb;line-height:24px;border:1px dotted #ccc;border-width:1px 0;font-size:12px;padding:12px 10px; vertical-align:middle;margin:20px 0 0 56px;}
+.paybtn{width:84px;height:23px;border:1px solid #e06f00;border-width:0 1px 1px 0;background:#ff8c1b; color:#fff; display:inline-block; line-height:23px; text-align:center;margin-left:40px; cursor:pointer}
+a:hover.paybtn{color:#fff;}
+.reg-sucess{ width:680px;}
+.yanzhen-email .mt10{margin-top:10px;}
+
+/* 注册页改版 */
+.regMenu {border-bottom: 1px solid #cdcfd1;height: 37px;}
+.regMenu span {display: inline-block; _display:inline; _zoom:1;line-height: 35px;padding: 0;font-weight:bold;}
+.regMenu span a {display: block;margin:0 60px 0 0;color: #888888;outline:none;position:relative;top:1px;_top:-1px;*top:-1px;width:60px;text-decoration: none;}
+.regMenu span.active {background:#FFFFFF;color: #000000;}
+.regMenu span.active a{padding-top:0;color: #000000;border-bottom: 2px solid #ff4200;_top:1px;*top:1px;}
+.regMenu span a:hover{color: #888888;}
+.regMenu span.active a:hover{color:#000000;}
+.porright .icon-login a{line-height: 14px; margin:6px 0;}
+.porleft .agreement{line-height:14px; height:14px;font-size:12px;color:#666;}
+.agreement input{margin:0 3px 0 0;vertical-align:middle;*vertical-align:top; margin-top:-2px;}
+.agreement a{color:#666;}
+.inp{height:33px;}
+.btnGray{background:url(https://passport.58.com/pic2/ui6/my/images/reg-btn.gif?) no-repeat 0 -36px; display:inline-block;_display:inline;_zoom:1; height:35px; line-height:35px; padding-left:1px;position:relative;top:-1px; vertical-align:middle;}
+.btnGray input{background:url(https://passport.58.com/pic2/ui6/my/images/reg-btn.gif?) no-repeat right -36px; color:#333; width:155px; height:35px; text-align:center; padding:0 !important; margin:0; font-size:14px;border:0; cursor:pointer;}
+#sendbtnp{margin:0;padding:0; line-height:35px;}
+.porleft p{padding:10px 0; line-height:30px;}
+.pd-20{padding:20px;}
+.porleft input{vertical-align:middle;}
+.regtlx{width:84px;}
+.porright{line-height:30px;}
+.porright p{padding-bottom:15px;}
+.porright .icon-login{padding:15px 0 0 0; font-size:12px;}
+.porright .icon-login a{color:#686868;}
+.icon-login a{border:0; width:80px;display:inline-block;_display:inline;_zoom:1;padding-right:0; line-height:14px;}
+.co_sina {background-position:0 -207px;background-position:0 -208px\0; *background-position:0 -208px; _background-position:0 -208px;}
+.co_qq {background-position:0 -236px;}
+.co_renren {background-position:0 -307px;}
+.co_baidu{ background-position:0 -784px;}
+.co_feixin{ background-position:0 -688px;}
+.co_pay{ background:url(https://passport.58.com/pic2/ui6/my/images/reg-menu.gif) no-repeat;background-position:0 -734px;margin-left:10px;}
+.reg-sucess h2 span.reg-sucess-tele{background: url(https://passport.58.com/pic2/ui6/my/images/reg-ok.png?) no-repeat 0 -41px;display: block;width: 40px;height: 40px;left: 0;margin: 0 5px 0 0;overflow: hidden;position: absolute;top: 0;}
+
+#loginTab{position:absolute;right:5px;bottom:5px;display:inline;font-weight:normal;line-height: 20px;font-size: 12px;}
+.regMenu {position:relative;}
+#loginTab a{color: #0000cc;display: inline;margin: 0;outline: medium none;position: static;text-decoration: none;width: auto;}
+.regWrap{padding-top: 32px;}
+#loginTab a:hover{text-decoration: underline;}
+
+#wxwrap{width: 100%;position: relative;}
+#ewmwrap{position: absolute;top: 24px;width: 100%;}
+#tipwrap{position: absolute;top: 20px;width: 100%;}
+#ewmwrap p{text-align: center;color: #888888;font-weight: bold;line-height: 35px;}
+#ewmimgwrap{margin: 0 auto;width: 149px;height: 149px;border: 1px solid #d3d3d3;position: relative;}
+#expireMask{display: block;z-index: 1;cursor: pointer;}
+#expireMask div{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;opacity: 0.6;filter:Alpha(Opacity=60);}
+#expireMask p{color: #FFF;font-size: 12px;line-height: 25px;padding-top: 48px;position: absolute;top: 0;width: 100%;}
+#showtip{padding-top:245px;text-align: center;}
+#showtip a{color:#b8b8b8;}
+
+#weixinRight,#weixinLeft{float: left;}
+#weixinLeft{width: 280px;}
+#weixinLeft p, #weixinLeft a{font-size: 12px;}
+#weixinRight img{margin-top: 42px;}
+#weixinRight p{height:auto;font-size: 12px;line-height: 24px;color:#888888;}
+#weixinRight .wxregflow{font-size: 12px;font-weight: bold;padding: 10px 0 0 0;color:#787878;}
+#origReg{padding-left: 52px;}
+#weixinReg{padding-left: 18px;}
+p.submitwrap{position: relative;}
+.agreement a{color:#0000cc;}
+#loginOpt{font-size: 12px;line-height: 14px;position: absolute;bottom: 12px;margin-left: 10px;}

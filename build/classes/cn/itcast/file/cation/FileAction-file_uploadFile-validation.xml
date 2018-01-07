@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd"> 
+<validators>
+
+
+    <field name="office">
+        <field-validator type="required">
+             <message>必须输入文件</message>
+        </field-validator> 
+    </field>
+      <field name="userFile.title">
+        <field-validator type="requiredstring">
+             <param name="trim">true</param>
+             <message>必须输入文件名</message>
+        </field-validator>
+        <field-validator type="stringlength">
+         	<param name="minLength">2</param>
+         	<param name="maxLength">8</param>
+            <message>超过长度限制，必须在2~8为之间</message>
+        </field-validator>
+    </field>
+    
+    <field name="userFile.introduce">
+        <field-validator type="requiredstring">
+             <param name="trim">true</param>
+             <message>必须输入简介</message>
+        </field-validator>
+        <field-validator type="stringlength">
+         	<param name="minLength">20</param>
+         	<param name="maxLength">50</param>
+            <message>超过长度限制，必须在20~60为之间</message>
+        </field-validator>
+    </field>
+</validators>

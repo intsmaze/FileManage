@@ -1,0 +1,437 @@
+package cn.itcast.user.action;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.util.Date;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.opensymphony.xwork2.ModelDriven;
+
+import cn.itcast.core.action.BaseAction;
+import cn.itcast.core.constant.Constant;
+import cn.itcast.core.util.FileNameToUUID;
+import cn.itcast.core.util.MD5keyBean;
+import cn.itcast.core.util.SMTPSimpleMail;
+import cn.itcast.core.util.SensitivewordFilter;
+import cn.itcast.user.entity.User;
+import cn.itcast.user.service.UserService;
+import cn.itcast.useremail.entity.UserEmail;
+import cn.itcast.useremail.service.UserEmailService;
+
+@Controller("userAction")
+@Scope(value="prototype")
+public class UserAction extends BaseAction implements ModelDriven<User>{
+
+	private static final long serialVersionUID = 1L;
+
+	@Resource(name=UserService.SERVICE_NAME)
+	private UserService userService;
+	
+	@Resource(name=UserEmailService.SERVICE_NAME)
+	private UserEmailService userEmailService;
+	
+	@Resource(name="sensitivewordFilter")
+	private SensitivewordFilter sensitivewordFilter;
+	
+	private User user;
+	
+	//用户上传的头像
+	private File headImg;
+	private String headImgContentType;
+	private String headImgFileName;
+		
+	//提示信息
+	private String tipEmail;
+	//提示信息
+	private String tipAccount;
+	
+	//无用属性，接收ajax的参数
+	private String time;
+	
+	
+	/**  
+	* @throws IOException 
+	* @Name: checkUser
+	* @Description: 用戶注册页面，当光标焦点离开账号文本框，通过ajax传来参数，判断账号在user表和useremail表中是否已经有对应的账号
+	* @Author: 刘洋（作者）
+	* @Version: V2.00 （版本号）
+	* @Create Date: 2014-7-6（创建日期）
+	* @Parameters: 无
+	* @Return: String：在原页面显示
+	*/
+	public void checkUser() throws IOException{	
+		String message=null;
+		/**
+	     *   如果message==2，说明登录名在数据库表中已经存在记录（list.size()>0)，此时不能执行保存
+	     *   如果message==3，说明登录名在数据库表中不存在记录（list.size()==0），此时可以执行保存
+		 */
+		List<User> list = userService.getUserByAccount(user.getAccount());
+		List<UserEmail> listemail = userEmailService.getuserEmailByAccount(user.getAccount());
+		
+		if((list!=null && list.size()>0)||(listemail!=null && listemail.size()>0))
+		{
+			message = "2";
+		}
+		else
+		{
+			message = "3";
+		}
+		HttpServletResponse response=ServletActionContext.getResponse();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.write(message);
+	}
+	
+	
+	/**  
+	* @throws IOException 
+	* @Name: checkUser
+	* @Description: 用戶注册页面，当光标焦点离开账号文本框，通过ajax传来参数，判断账号在user表和useremail表中是否已经有对应的邮箱
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-7-6（创建日期）
+	* @Parameters: 无
+	* @Return: String：在原页面显示
+	*/
+	public void checkEmail() throws IOException{	
+		String message=null;
+		/**
+	     *   如果message==2，说明登录名在数据库表中已经存在记录（list.size()>0)，此时不能执行保存
+	     *   如果message==3，说明登录名在数据库表中不存在记录（list.size()==0），此时可以执行保存
+		 */
+		List<User> list = userService.getUserByEmail(user.getEmail());
+		List<UserEmail> listemail = userEmailService.getuserEmailByEmail(user.getEmail());		
+		if((list!=null && list.size()>0)||(listemail!=null && listemail.size()>0))
+		{
+			message = "2";
+		}
+		else
+		{
+			message = "3";
+		}
+		HttpServletResponse response=ServletActionContext.getResponse();
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.write(message);
+	}
+	
+	
+	
+		
+	/**  
+	* @Name: registerUI
+	* @Description: 跳转到注册界面
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-7-21（创建日期）
+	* @Parameters: 无
+	* @Return: String：跳转到user/registerUI.jsp
+	*/
+	public String registerUI()
+	{
+		return "registerUI";
+	}
+	
+	/**  
+	* @throws IOException 
+	* @Name: registerUser
+	* @Description: 用户提交注册信息，当用户账号或邮箱已经注册了，则返回到注册页面，提示用户账号或邮箱已经注册了
+	* 虽然ajax前台提示用户账号和邮箱已经注册，但是小人还是可以绕过进行注册，所以要再次验证账号和邮箱是否注册过
+	* @Author: 刘洋（作者）
+	* @Version: V3.00 （版本号）
+	* @Create Date: 2014-7-9（创建日期）
+	* @Parameters: 无
+	* @Return: String：注册成功跳转到home/home.jsp(系统首页)
+	*/
+	public String registerUser() throws IOException
+	{
+		//根据账号查询是否已经存在，同时查询两个表做判断,这样写效率低，
+		//可以先查user表再查userEmail表，这样查询第二个表的几率就小写	
+		List<User> list=userService.getUserByAccount(user.getAccount());			
+		if(list!=null && list.size()>0)
+		{
+			tipAccount="账号已经存在";
+			return "input";
+		}
+		else
+		{
+			List<UserEmail> listEmail=userEmailService.getuserEmailByAccount(user.getAccount());
+			if(listEmail!=null && listEmail.size()>0)
+			{
+				tipAccount="账号已经存在";
+				return "input";
+			}
+			else
+			{
+				list=userService.getUserByEmail(user.getEmail());			
+				if(list!=null && list.size()>0)
+				{
+					tipEmail="邮箱已经存在";
+					return "input";
+				}
+				else
+				{
+					listEmail=userEmailService.getuserEmailByEmail(user.getEmail());
+					if(listEmail!=null && listEmail.size()>0)
+					{
+						tipEmail="邮箱已经存在";
+						return "input";
+					}
+					else
+					{
+						try {
+							SMTPSimpleMail.sendEmail(user.getEmail());
+						}  catch (Exception e) {
+							tipEmail="无效的邮箱号码";
+							return "input";
+						} 
+						//加密前
+						String logonPwd = user.getPassword();
+						//加密后
+						String md5LogonPwd = "";
+						//使用MD5进行密码加密
+						MD5keyBean md5keyBean = new MD5keyBean();
+						md5LogonPwd = md5keyBean.getkeyBeanofStr(logonPwd);
+						UserEmail userEmail=new UserEmail();
+						//将加密后的结果放置到User对象中
+						userEmail.setPassword(md5LogonPwd);		
+						userEmail.setDate(new Date());
+						userEmail.setEmail(user.getEmail());
+						userEmail.setAccount(user.getAccount());
+						userEmailService.save(userEmail);				
+						return "email";
+					}						
+				}
+			}			
+		}
+	}
+	
+	
+	/**  
+	* @Name: findUI
+	* @Description: 跳转到用户密码找回页面
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-6-21（创建日期）
+	* @Parameters: 无
+	* @Return: String：跳转到user/findUI.jsp
+	*/
+	public String findUI()
+	{
+		return "findUI";
+	}
+	
+	/**  
+	* @Name: findUser
+	* @Description: 找回密码,根据邮箱地址来确认，邮箱和密码正确则向该邮箱发送包含修改密码和邮箱地址的邮件，错误提示有效信息错误，返回本界面
+	* @Author: 刘洋（作者）
+	* @Version: V2.00 （版本号）
+	* @Create Date: 2014-7-10（创建日期）
+	* @Parameters: 无
+	* @Return: String：跳转到useremail/modifyAccount.jsp或user/findUI.jsp
+	*/
+	public String findUser()
+	{		
+		List<User> list=
+				userService.getUserByEmail(user.getEmail());		
+		if(list.size()>0)
+		{			
+			//加密前
+			String logonPwd = user.getPassword();
+			//使用MD5进行密码加密
+			MD5keyBean md5keyBean = new MD5keyBean();
+			//加密后
+			String md5LogonPwd = md5keyBean.getkeyBeanofStr(logonPwd);		
+			try {
+				SMTPSimpleMail.sendEmailModify(md5LogonPwd,user.getEmail());
+			} catch (Exception e) {
+				tipEmail="无效的邮箱号码";
+				return "input";
+			}		
+			tipEmail="密码修改成功，请前往邮箱去验证！";
+			return "email";		
+		}
+		else
+		{
+			tipEmail="邮箱号码有误！！";
+			return "input";	
+		}
+	}
+	
+		
+	/**  
+	* @Name: loginUI
+	* @Description: 跳转到系统登录界面
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-6-21（创建日期）
+	* @Parameters: 无
+	* @Return: String：跳转到user/loginUI.jsp
+	*/
+	public String loginUI()
+	{
+		return "loginUI";
+	}
+		
+	/**  
+	* @Name: loginUser
+	* @Description: 用户登录进行验证,成功用户信息存入session中
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-6-22（创建日期）
+	* @Parameters: 无
+	* @Return: String：密码错误跳转到user/loginUI.jsp，成功跳转到home/home.jsp
+	*/
+	public String loginUser()
+	{
+		//加密前
+		String logonPwd = user.getPassword();
+		//加密后
+		String md5LogonPwd = "";
+		//使用MD5进行密码加密
+		MD5keyBean md5keyBean = new MD5keyBean();
+		md5LogonPwd = md5keyBean.getkeyBeanofStr(logonPwd);
+		List<User> list=
+				userService.getUserByAccountAndPassword(user.getAccount(),md5LogonPwd);	
+		if(list.size()>0)
+		{
+			user=list.get(0);
+			if(user.getState()>0)
+			{
+				tipAccount="账号已经被冻结";
+				return "loginUI";
+			}
+			else
+			{
+				ServletActionContext.getRequest().getSession().setAttribute(Constant.USER, list.get(0));
+				return "home";
+			}	
+		}
+		tipAccount="账号或密码错误";
+		return "loginUI";
+	}
+	
+	
+	/**  
+	* @Name: quitUser
+	* @Description: 用户退出，清除session
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-6-23（创建日期）
+	* @Parameters: 无
+	* @Return: String：跳转到home/title.jsp
+	*/
+	public String quitUser()
+	{
+		ServletActionContext.getRequest().getSession().removeAttribute(Constant.USER);
+		return "title";
+	}
+	
+			
+	/**  
+	* @Name: editUI
+	* @Description: 从首页跳转到编辑页面，把用户信息放到值栈中，便于回显
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-6-21（创建日期）
+	* @Parameters: 无
+	* @Return: String：跳转到user/editUI.jsp
+	*/
+	public String editUI()
+	{
+		user=(User) ServletActionContext.getRequest().getSession().getAttribute(Constant.USER);	
+		return "editUI";
+	}
+	
+	/**  
+	* @throws IOException 
+	* @Name: editUser
+	* @Description: 用户信息编辑页面,回显用户信息,同时要修改session中存在的user信息
+	* @Author: 刘洋（作者）
+	* @Version: V1.00 （版本号）
+	* @Create Date: 2014-6-22（创建日期）
+	* @Parameters: 无
+	* @Return: String：跳转到home/home.jsp
+	*/
+	public String editUser() throws IOException
+	{
+		User u=userService.findObjectById(user.getUserid());
+		String fileName=FileNameToUUID.getImageUUID(headImg, headImgFileName);
+		if(fileName!=null)
+		{
+			//2、设置用户头像路径
+			u.setImage(fileName);
+		}	
+		String name=sensitivewordFilter.replaceSensitiveWord(user.getName(), 1, "*");
+		u.setName(name);
+		u.setBirthday(user.getBirthday());
+		userService.update(u);
+		ServletActionContext.getRequest().getSession().setAttribute(Constant.USER, u);
+		return "main";
+	}
+	
+	
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public File getHeadImg() {
+		return headImg;
+	}
+	public void setHeadImg(File headImg) {
+		this.headImg = headImg;
+	}
+	public String getTipEmail() {
+		return tipEmail;
+	}
+	public void setTipEmail(String tipEmail) {
+		this.tipEmail = tipEmail;
+	}
+	public String getHeadImgContentType() {
+		return headImgContentType;
+	}
+	public void setHeadImgContentType(String headImgContentType) {
+		this.headImgContentType = headImgContentType;
+	}
+	public String getHeadImgFileName() {
+		return headImgFileName;
+	}
+	public void setHeadImgFileName(String headImgFileName) {
+		this.headImgFileName = headImgFileName;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
+	public String getTipAccount() {
+		return tipAccount;
+	}
+	public void setTipAccount(String tipAccount) {
+		this.tipAccount = tipAccount;
+	}
+	@Override
+	public User getModel() {
+		 if(user == null){
+	           user = new User();
+	       }
+	       return user;
+	}
+}

@@ -1,0 +1,20 @@
+package cn.itcast.core.constant;
+
+
+public class Constant {
+	
+	//系统中用户在session中的标识符
+	public static String USER = "USER";
+	
+	public static String ADMIN = "ADMIN";
+	
+	//转换器安装路径
+	public static  String EXEPATH= "c:/SWFTools/pdf2swf.exe";
+	
+	//索引库的路径
+	public static String INDEXFOLDER = "D:\\CodeSpace\\EclipseCode\\FileManageSystem\\index";
+	
+	//索引库的路径
+	public static String SENSITIVEWORD = "D:\\CodeSpace\\EclipseCode\\FileManageSystem\\conf\\sensitiveword.txt";
+		
+}

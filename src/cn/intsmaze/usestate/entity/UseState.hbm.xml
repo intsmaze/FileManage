@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-10-26 14:43:52 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.intsmaze.usestate.entity.UseState" table="USESTATE">
+    
+        <id name="useStateId" type="java.lang.String">
+            <column name="USESTATEID" />
+            <generator class="uuid" />
+        </id>
+  
+         <property name="userId" type="java.lang.String" >
+            <column name="USERID" />
+        </property>
+        
+         <property name="userFileId" type="java.lang.String" >
+            <column name="USERFILEID" />
+       </property>
+        
+         <property name="state" type="int">
+            <column name="STATE" />
+        </property>
+         <property name="report" type="int">
+            <column name="REPORT" />
+        </property>
+        
+    </class>
+</hibernate-mapping>

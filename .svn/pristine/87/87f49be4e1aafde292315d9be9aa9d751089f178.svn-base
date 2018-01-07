@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 禁用动态方法访问 
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />-->
+	<!-- 配置成开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 配置拓展名为action -->
+	<constant name="struts.action.extention" value="action" />
+	<!-- 把主题配置成simple -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<!-- 配置全局结果及异常映射 -->
+	<package name="base-default" extends="struts-default">
+	
+	
+		<!-- 全局返回结果
+		<global-results>	
+			<result name="sysError">/error.jsp</result>
+			<result name="root">/error.jsp</result>
+		</global-results>
+ -->
+		<!-- 全局异常映射 
+		<global-exception-mappings>
+			 声明的系统异常 
+			<exception-mapping result="sysError" exception="cn.itcast.core.exception.SysException"></exception-mapping>		
+			未声明的异常 
+			<exception-mapping result="root" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+		-->
+		
+	</package>
+
+	
+
+	<package name="sys" extends="base-default">
+		<interceptors>
+			<interceptor name="userInterceptor" class="cn.itcast.core.interceptor.UserInterceptor"/>
+		</interceptors>
+	</package>
+	
+	
+	<include file="cn/itcast/*/conf/*-struts.xml"/>
+	<include file="cn/itcast/*/*/conf/*-struts.xml"/>
+
+</struts>

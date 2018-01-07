@@ -1,0 +1,26 @@
+package cn.intsmaze.emailsite.entity;
+
+public class EmailSite {
+	
+	private String emailSiteId;
+	private String emailName;
+	private String emailSite;
+	public String getEmailSiteId() {
+		return emailSiteId;
+	}
+	public void setEmailSiteId(String emailSiteId) {
+		this.emailSiteId = emailSiteId;
+	}
+	public String getEmailName() {
+		return emailName;
+	}
+	public void setEmailName(String emailName) {
+		this.emailName = emailName;
+	}
+	public String getEmailSite() {
+		return emailSite;
+	}
+	public void setEmailSite(String emailSite) {
+		this.emailSite = emailSite;
+	}
+}

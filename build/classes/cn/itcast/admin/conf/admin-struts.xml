@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="admin-action" namespace="/admin" extends="base-default">
+	
+	
+		<action name="admin_*" class="adminAction" method="{1}">
+				
+			<result name="loginUI">/admin.jsp</result>	
+			<result name="home">/WEB-INF/jsp/admin/home.jsp</result>
+			<result name="dealFile">/WEB-INF/jsp/admin/listUI.jsp</result>
+			
+			
+			<!--  <result name="findUI">/WEB-INF/jsp/user/findUI.jsp</result>	
+			<result name="title">/WEB-INF/jsp/home/title.jsp</result>		
+			<result name="registerUI">/WEB-INF/jsp/user/registerUI.jsp</result>
+			<result name="{1}">/WEB-INF/jsp/user/{1}.jsp</result>	
+			-->	
+		</action>
+		
+		
+	</package>
+	
+	
+</struts>

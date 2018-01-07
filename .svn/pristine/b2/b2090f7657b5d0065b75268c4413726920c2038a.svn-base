@@ -1,0 +1,28 @@
+package cn.itcast.useremail.service;
+
+import java.util.List;
+
+import cn.itcast.core.service.BaseService;
+import cn.itcast.user.entity.User;
+import cn.itcast.useremail.entity.UserEmail;
+
+public interface UserEmailService extends BaseService<UserEmail>{
+	
+	public final static String SERVICE_NAME=
+			"cn.itcast.useremail.service.UserEmailServiceImpl";
+
+	List<UserEmail> getuserEmailByIdAndEmail(String userEamilId, String email);
+
+	List<UserEmail> getuserEmailByAccount(String account);
+
+	List<UserEmail> getuserEmailByEmail(String email);
+
+	void deletePastRecord();
+
+
+
+
+	
+	
+	
+}

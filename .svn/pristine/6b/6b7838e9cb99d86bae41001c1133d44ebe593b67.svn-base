@@ -1,0 +1,60 @@
+package cn.itcast.report.entity;
+
+import cn.itcast.file.entity.UserFile;
+import cn.itcast.user.entity.User;
+
+/**
+ * 举报的流程如何控制是个问题！就这样吧，用户举报，管理员就可以立即接受进行受理，
+ * 管理员这边显示的信息就是，举报者信息，举报文件名，举报原因，
+ * 详细信息（点击它，打开一个新的页面，这个页面时该文件的信息页面，管理员进行验证），受理，拒绝（管理员查看后，点击受理，那么该文件就被封，无法查看了，后面相同的举报该文件就删除了，
+ * 点击拒绝，该文件无害，清除所有该文件的举报）同时对举报该文件的用户或恶意上传不良信息的用户添加一次恶意行为
+ * */
+public class Report {
+
+	private String reportId;
+	
+	private User user;//举报用户的id
+	private UserFile userFile;//被举报文件的id
+	
+	private String reason;
+	
+	public String getReportId() {
+		return reportId;
+	}
+
+	public void setReportId(String reportId) {
+		this.reportId = reportId;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public UserFile getUserFile() {
+		return userFile;
+	}
+
+	public void setUserFile(UserFile userFile) {
+		this.userFile = userFile;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	@Override
+	public String toString() {
+		return "Report [reportId=" + reportId + ", user=" + user
+				+ ", userFile=" + userFile + ", reason=" + reason + "]";
+	}
+	
+	
+}

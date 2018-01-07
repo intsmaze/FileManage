@@ -1,0 +1,14 @@
+package cn.itcast.file.dao;
+
+import java.util.List;
+import java.util.Set;
+
+import cn.itcast.core.dao.BaseDao;
+import cn.itcast.file.entity.FileResource;
+import cn.itcast.file.entity.UserFile;
+
+public interface FileDao extends BaseDao<UserFile>{
+
+	public List<UserFile> getFileByUserid(String user);
+
+}

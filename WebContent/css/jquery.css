@@ -1,0 +1,145 @@
+
+
+.popup-tl {
+	padding-left:8px;
+	height: 37px;
+	background-image: url(images/title_bg_left.gif);
+	background-repeat: no-repeat;
+	background-position: 0 0;
+}
+.popup-tr{
+	padding-right:8px;
+	height: 37px;
+	background-image: url(images/title_bg_right.gif);
+	background-repeat: no-repeat;
+	background-position: right 0;
+}
+.popup-tc{
+	overflow:hidden;
+	height:29px;
+	line-height:29px;
+	padding-top: 8px;
+	padding-right: 5px;
+	background-image: url(images/title_bg_center.gif);
+	background-repeat: repeat-x;
+	background-position: 0 0;
+}
+.popup-ttc{height:3px}
+.popup-header-text{font-size:12px;font-weight:bold;color:#fff;margin-left:5px;float:left}
+.popup-header-tools{float:right;margin-top:5px}
+
+.popup-header-tools .popup_close{
+	cursor:pointer;
+	width:16px;height:16px;float:left;margin:0 1px;
+	background:url(images/ico.gif) no-repeat 0 0;
+}
+
+.popup-header-tools .popup_close span{display:none}
+
+/*body*/
+.popup-ml{
+	padding-left:8px;
+	background-image: url(images/win_l.gif);
+	background-repeat: repeat-y;
+	background-position: 0 0;
+	background-color: #666;
+}
+.popup-mr{
+	padding-right:8px;
+	background-image: url(images/win_r.gif);
+	background-repeat: repeat-y;
+	background-position: right 0;
+	background-color: #666;
+}
+.popup-mc{
+	padding:0;
+	background-color: #FFFFFF;
+}
+.popup-body{
+	padding:0;
+	font-size:12px;
+}
+
+
+.popup-body-0 { /*没有图标*/
+	padding:10px;
+	text-align:center;
+	background:none;
+}
+.popup-body-1 { /*成功图标*/
+    padding-left:90px;
+	background:url(images/right.gif) no-repeat 20px 50%
+}
+.popup-body-2 {/*错误图标*/
+    padding-left:90px;
+	background:url(images/err.gif) no-repeat 20px 50%
+}
+.popup-body-3 {/*确认图标*/
+    padding-left:90px;
+	background:url(images/ask.gif) no-repeat 20px 50%
+}
+.popup-body-4 {/*提示图标*/
+	padding-left:90px;
+	background:url(images/info.gif) no-repeat 20px 50%
+}
+
+.popup-body-5 {
+    padding:10px 0px 0px 10px;
+    text-align:left;
+}
+.popup-body-9 {
+	background:none;
+}
+.popup-body-1 .popup-content,.popup-body-2 .popup-content,.popup-body-3 .popup-content,.popup-body-4 .popup-content{padding:50px 0 0}
+/*button*/
+.popup-btn{
+	text-align:right;
+	padding-right: 5px;
+	background-color: #FFF;
+}
+
+/*footer*/
+.popup-bl{
+	padding-left:8px;
+	background-image: url(images/win_lb.gif);
+	background-repeat: no-repeat;
+	background-position: 0 bottom;
+	background-color: #666;
+}
+.popup-br{
+	padding-right:8px;
+	background-image: url(images/win_rb.gif);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+}
+.popup-bc{
+	height:8px;
+	font-size:3px;
+	background-image: url(images/win_b.gif);
+	background-repeat: repeat-x;
+	background-position: 0 0;
+}
+
+
+.popup-body iframe {
+	width:100%;
+	height:100%;
+	_height:auto;
+}
+
+/*取消确认按钮样式*/
+input.btnStyle{
+	width:50px;
+	height:24px;
+	line-height:24px;
+	font-size:12px;
+	color:#FFFFFF;
+	border:0;
+	margin-top: 7px;
+	margin-right: 0;
+	margin-bottom: 7px;
+	margin-left: 0;
+	background-color: #54ADEB;
+	background-image: url(images/btn_bg.gif);
+	background-repeat: no-repeat;
+}

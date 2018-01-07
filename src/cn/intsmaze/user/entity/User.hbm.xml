@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-10-26 14:43:52 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.intsmaze.user.entity.User" table="USER">
+    
+        <id name="userid" type="java.lang.String">
+            <column name="USERID" />
+            <generator class="uuid" />
+        </id>
+        <property name="account" type="java.lang.String">
+            <column name="ACCOUNT" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="image" type="java.lang.String">
+            <column name="IMAGE" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="BIRTHDAY" />
+        </property>
+        <property name="state" type="int">
+            <column name="STATE" />
+        </property>
+        <property name="badBehavior" type="int">
+            <column name="BADBEHAVIOR" />
+        </property>
+         <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        
+        <set name="userfiles" table="USERFILE"  inverse="false" lazy="true">
+            <key>
+                <column name="USERID" />
+            </key>
+            <one-to-many class="cn.intsmaze.file.entity.UserFile" />
+        </set>
+    </class>
+</hibernate-mapping>

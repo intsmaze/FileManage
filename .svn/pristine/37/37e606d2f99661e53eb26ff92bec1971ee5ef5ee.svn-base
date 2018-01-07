@@ -1,0 +1,13 @@
+package cn.itcast.admin.dao;
+
+import java.util.List;
+
+import cn.itcast.admin.entity.Admin;
+import cn.itcast.core.dao.BaseDao;
+import cn.itcast.user.entity.User;
+
+public interface AdminDao extends BaseDao<Admin>{
+
+	List<Admin> getAdminByAccountAndPassword(String account, String password);
+
+}

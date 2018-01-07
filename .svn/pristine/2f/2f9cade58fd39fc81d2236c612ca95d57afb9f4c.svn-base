@@ -1,0 +1,14 @@
+package cn.itcast.usestate.service;
+
+import java.util.List;
+
+import cn.itcast.core.service.BaseService;
+import cn.itcast.usestate.entity.UseState;
+
+
+public interface UseStateService extends BaseService<UseState>{
+	public final static String SERVICE_NAME=
+			"cn.itcast.usestate.service.UseStateServiceImpl";
+
+	List<UseState> getIsDownByUseridAndFileid(String fileid, String userid);
+}

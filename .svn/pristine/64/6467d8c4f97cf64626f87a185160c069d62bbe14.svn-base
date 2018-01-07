@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd"> 
+<validators>
+   <field name="user.name">
+        <field-validator type="requiredstring">
+             <param name="trim">true</param>
+             <message>必须输入网名</message>
+        </field-validator>
+         <field-validator type="stringlength">
+         	<param name="minLength">2</param>
+         	<param name="maxLength">6</param>
+            <message>超过长度限制，必须在2~6为之间</message>
+        </field-validator>
+    </field>
+</validators>

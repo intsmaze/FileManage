@@ -1,0 +1,33 @@
+package cn.itcast.usestate.service;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import cn.itcast.core.service.BaseServiceImpl;
+import cn.itcast.user.dao.UserDao;
+import cn.itcast.usestate.dao.UseStateDao;
+import cn.itcast.usestate.entity.UseState;
+
+
+@Service(UseStateService.SERVICE_NAME)
+public class UseStateServiceImpl extends BaseServiceImpl<UseState>
+					implements UseStateService
+{
+	private UseStateDao useStateDao;
+	
+	@Resource (name="useStateDaoImpl")
+	public void setUseStateDao(UseStateDao useStateDao) {
+		super.setBaseDao(useStateDao);
+		this.useStateDao = useStateDao;
+	}
+
+	@Override
+	public List<UseState> getIsDownByUseridAndFileid(String fileid,
+			String userid) {
+		return useStateDao. getIsDownByUseridAndFileid(fileid,userid);
+	}
+
+}

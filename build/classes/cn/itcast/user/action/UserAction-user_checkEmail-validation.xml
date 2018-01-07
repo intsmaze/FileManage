@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd"> 
+<validators>
+	<!-- ajax请求发送的参数，校验器进行校验后，如果不满足则返回input，<result name="input">/WEB-INF/jsp/user/registerUI.jsp</result>
+	但是因为是ajax请求，它是不刷新整个页面的，所以根本就没有转向新的页面，所以页面上面看不到错误的提示信息，但是校验器是成功执行了，可以想办法解决，但是
+	我觉得不需要管他，因为这个后台校验是针对小人的，对普通用户js就可以出来校验，所以在action配置文件中可以不写input返回逻辑视图 -->
+   <field name="email">
+        <field-validator type="requiredstring">
+             <param name="trim">true</param>
+             <message>必须输入邮箱名称</message>
+        </field-validator>
+         <field-validator type="email">
+            <message>邮箱格式不正确</message>
+        </field-validator>
+    </field> 
+</validators>

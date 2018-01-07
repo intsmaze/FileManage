@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="report-action" namespace="/report" extends="sys" >
+	
+		<action name="report_*" class="reportAction" method="{1}">
+	
+			<!-- 配置系统默认的拦截器 
+			<interceptor-ref name="defaultStack"/>
+			自定义用户登录拦截器 
+			<interceptor-ref name="userInterceptor">
+				指定哪些方法被拦截,这里举报先拦截判断是否登录，在操作方法判断是否增加举报记录 
+				<param name="includeMethods">isReport</param>
+			</interceptor-ref>
+				<result type="chain" name="fileLookId">    
+				<param name="namespace">/file</param>
+				<param name="actionName">file_fileLookId</param>
+				<param name="methodName">fileLookId</param>
+			</result>-->
+			
+		
+			<result name="loginUI">/WEB-INF/jsp/user/loginUI.jsp</result>
+							
+			<result name="reportUI">/WEB-INF/jsp/file/reportFile.jsp</result>
+			
+			<result name="sucess">/WEB-INF/jsp/file/sucess.jsp</result>
+			
+			<result name="reportList">/WEB-INF/jsp/admin/listUI.jsp</result>
+			
+		</action>
+		
+		
+	</package>
+	
+	
+</struts>

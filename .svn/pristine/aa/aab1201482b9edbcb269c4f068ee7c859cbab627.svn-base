@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GBK"?>
+
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd"> 
+<validators>
+    <field name="account">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>必须输入账号</message>
+        </field-validator>
+        <field-validator type="regex">
+			<param name="regexExpression"><![CDATA[[a-zA-Z]{4,8}]]></param>
+			<message>你的账号必须由4~8位字母组成</message>
+		</field-validator>
+    </field>
+</validators>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>	
+
+	<!-- 允许OGNL访问静态方法 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<constant name="struts.custom.i18n.resources" value="fileupload"></constant>
+	
+	
+	<constant name="struts.multipart.maxSize" value="100000000"/>
+
+
+	<package name="file-action" namespace="/file" extends="sys">
+	
+		<action name="file_*" class="fileAction" method="{1}">
+		
+			<!-- 配置fileUpload的拦截器-->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+				 application/vnd.ms-excel
+			 	 ,application/vnd.openxmlformats-officedocument.wordprocessingml.document
+			 	 , application/msword,application/vnd.ms-powerpoint
+				</param> 	
+			<param name="maximumSize">5150000</param>
+			
+			</interceptor-ref>  
+			
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>
+
+			<!-- 自定义用户登录拦截器 -->
+			<interceptor-ref name="userInterceptor">
+				<!-- 指定哪些方法被拦截 -->
+				<param name="includeMethods">uploadUI,uploadFile</param>
+			</interceptor-ref>
+			
+			
+			<result name="fileInfor">/WEB-INF/jsp/file/fileInfor.jsp</result>
+			
+			<result name="input">/WEB-INF/jsp/file/uploadUI.jsp</result>
+			
+			<result name="listFile">/WEB-INF/jsp/file/listFile.jsp</result>
+			
+			<result name="fileDown">/WEB-INF/jsp/file/fileDown.jsp</result>
+			
+			<result name="documentView">/WEB-INF/jsp/file/file_flash.jsp</result>
+						
+						
+			<result name="download" type="stream">
+				<!--<param name="contentType">application/msword</param>指定被下载的文件类型-->
+			    <param name="inputName">inputStream</param><!-- 被下载文件的入口输入流，与inputStream属性名一致-->
+			    <param name="contentDisposition">attachment;filename="${filename}"</param>
+			    <!-- 指定下载的文件名 ，通过ognl动态获取文件名，调用动作类中的getFileName方法-->
+			    <param name="bufferSize">1024</param><!-- 指定下载文件的缓冲大小 -->
+			</result>
+			
+			<result name="loginUI">/WEB-INF/jsp/user/loginUI.jsp</result>
+			
+			<result name="{1}">/WEB-INF/jsp/file/{1}.jsp</result>
+			
+		</action>
+		
+	</package>
+	
+</struts>

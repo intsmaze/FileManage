@@ -1,0 +1,17 @@
+package cn.itcast.user.dao;
+
+import java.util.List;
+
+import cn.itcast.core.dao.BaseDao;
+import cn.itcast.user.entity.User;
+
+public interface UserDao extends BaseDao<User>{
+
+	List<User> getUserByAccountAndEmail(String account, String email);
+
+	List<User> getUserByAccountAndPassword(String account, String password);
+
+	List<User> getUserByAccount(String account);
+
+	List<User> getUserByEmail(String email);
+}

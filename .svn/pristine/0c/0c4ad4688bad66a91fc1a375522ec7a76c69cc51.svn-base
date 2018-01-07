@@ -1,0 +1,33 @@
+package cn.itcast.admin.service;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import cn.itcast.admin.dao.AdminDao;
+import cn.itcast.admin.entity.Admin;
+import cn.itcast.core.service.BaseServiceImpl;
+import cn.itcast.user.dao.UserDao;
+import cn.itcast.user.entity.User;
+
+@Service(AdminService.SERVICE_NAME)
+public class AdminServiceImpl extends BaseServiceImpl<Admin> implements AdminService{
+
+	private AdminDao adminDao;
+	
+	
+	@Resource (name="adminDaoImpl")
+	public void setAdminDao(AdminDao adminDao) {
+		super.setBaseDao(adminDao);
+		this.adminDao = adminDao;
+	}
+
+	public List<Admin> getAdminByAccountAndPassword(String account,String password) {		
+		return adminDao.getAdminByAccountAndPassword(account,password);
+	}
+
+
+
+}

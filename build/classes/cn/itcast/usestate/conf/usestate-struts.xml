@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="useState-action" namespace="/useState" extends="sys" >
+	
+		<action name="useState_*" class="useStateAction" method="{1}">
+	
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>
+			<!-- 自定义用户登录拦截器 -->
+			<interceptor-ref name="userInterceptor">
+				<!-- 指定哪些方法被拦截,这里评论，举报，下载先拦截判断是否登录，在操作方法判断是否增加记录 -->
+				<param name="includeMethods">isDown,isComment,isReport</param>
+			</interceptor-ref>
+			<result name="loginUI">/WEB-INF/jsp/user/loginUI.jsp</result>
+			
+		
+			<result type="chain" name="chain">    
+				<param name="namespace">/file</param>
+				<param name="actionName">file_downUI</param>
+				<param name="methodName">downUI</param>
+			</result>	
+			
+			<result type="chain" name="fileDown">    
+				<param name="namespace">/file</param>
+				<param name="actionName">file_downUI</param>
+				<param name="methodName">downUI</param>
+			</result>	
+					
+					
+			<result type="chain" name="comment">    
+				<param name="namespace">/file</param>
+				<param name="actionName">file_comment</param>
+				<param name="methodName">comment</param>
+			</result>	
+			
+			<result type="chain" name="reportUI">    
+				<param name="namespace">/report</param>
+				<param name="actionName">report_isReport</param>
+				<param name="methodName">isReport</param>
+			</result>	
+			
+			
+			<result type="chain" name="fileLookId">    
+				<param name="namespace">/file</param>
+				<param name="actionName">file_fileLookId</param>
+				<param name="methodName">fileLookId</param>
+			</result>	
+			
+		</action>
+		
+		
+	</package>
+	
+	
+</struts>

@@ -1,0 +1,162 @@
+package cn.itcast.file.service.impl;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.index.DirectoryReader;
+import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.Query;
+import org.apache.lucene.search.ScoreDoc;
+import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.search.highlight.Formatter;
+import org.apache.lucene.search.highlight.Highlighter;
+import org.apache.lucene.search.highlight.InvalidTokenOffsetsException;
+import org.apache.lucene.search.highlight.QueryScorer;
+import org.apache.lucene.search.highlight.Scorer;
+import org.apache.lucene.search.highlight.SimpleFragmenter;
+import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
+import org.apache.lucene.util.Version;
+import org.springframework.stereotype.Service;
+import org.wltea.analyzer.lucene.IKAnalyzer;
+
+import cn.itcast.core.constant.Constant;
+import cn.itcast.core.page.PageResult;
+import cn.itcast.core.service.BaseServiceImpl;
+import cn.itcast.file.dao.FileDao;
+import cn.itcast.file.entity.UserFile;
+import cn.itcast.file.service.FileService;
+import cn.itcast.file.util.LuceneUtils;
+import cn.itcast.file.util.UserFileUtils;
+
+@Service(FileService.SERVICE_NAME)
+public class FileServiceImpl extends BaseServiceImpl<UserFile> implements
+		FileService {
+
+	private FileDao fileDao;
+
+	@Resource(name = "fileDaoImpl")
+	public void setFileDao(FileDao fileDao) {
+		super.setBaseDao(fileDao);
+		this.fileDao = fileDao;
+	}
+
+	@Override
+	public List<UserFile> getFileByUserid(String user) {
+		return fileDao.getFileByUserid(user);
+	}
+
+	/**
+	 * @throws Exception
+	 * @Name: getFileByid
+	 * @Description: 查询文件的同时加载该文件的资源信息和用户信息,以及评论信息和该评论的用户信息
+	 * @Author: 刘洋（作者）
+	 * @Version: V1.00 （版本号）
+	 * @Create Date: 2015-10-23（创建日期）
+	 * @Parameters: 无
+	 */
+	public UserFile getFileByid(String fileid) {
+		UserFile userFile = fileDao.findObjectById(fileid);
+		userFile.getFileResource();
+		userFile.getUser();
+		userFile.getComments();
+		// userFile.setFileResource(userFile.getFileResource());
+		// userFile.setUser(userFile.getUser());
+		// 上面虽然进行获取，但是是懒加载，只有调用这两个属性的方法才会进行加载，所以要调用方法
+		System.out.println(userFile);
+		return userFile;
+	}
+
+
+	public void saveAndIndex(UserFile userFile) throws IOException {
+
+		this.save(userFile);
+		Analyzer standardAnalyzer =  new IKAnalyzer();
+		// 指定索引存储目录
+		Directory directory = FSDirectory.open(new File(Constant.INDEXFOLDER));
+		IndexWriterConfig indexWriterConfig = new IndexWriterConfig(Version.LUCENE_4_10_3, standardAnalyzer);
+		IndexWriter indexWriter = new IndexWriter(directory, indexWriterConfig);
+		Document document = UserFileUtils.userFileToDocument(userFile);
+		indexWriter.addDocument(document);
+		indexWriter.close();
+	}
+
+	
+	public PageResult highLighter(String selectname, int pageNo, int pageSize)
+			throws Exception {
+		
+		File folder = new File(Constant.INDEXFOLDER);
+		Directory directory = FSDirectory.open(folder);
+		IndexReader indexReader = DirectoryReader.open(directory);
+		IndexSearcher searcher = new IndexSearcher(indexReader);
+
+		String[] fields = { "title", "introduce" };
+		Analyzer analyzer = new IKAnalyzer();
+		MultiFieldQueryParser queryParse = new MultiFieldQueryParser(fields,analyzer);
+		Query query = queryParse.parse(selectname);
+
+		Scorer fragmentScorer = new QueryScorer(query);
+
+		Formatter formatter = new SimpleHTMLFormatter("<font color='red'>",
+				"</font>");
+		// 设定高亮显示的格式，也就是对高亮显示的词组加上前缀后缀
+		Highlighter highlighter = new Highlighter(formatter, fragmentScorer);
+		// 设置返回摘要的长度，默认5
+		highlighter.setTextFragmenter(new SimpleFragmenter(20));
+
+		if (pageNo < 1) pageNo = 1;
+
+		int start = (pageNo - 1) * pageSize;// 设置数据起始索引号
+		int rows = pageSize;// 每一页的大小
+
+		TopDocs topDocs = searcher.search(query, start + rows);
+
+		long size = topDocs.totalHits;// 命中的总记录
+
+		ScoreDoc scoreDocs[] = topDocs.scoreDocs;
+		
+		
+		List<UserFile> userFilelist = new ArrayList<UserFile>();
+		
+		int endResult = Math.min(scoreDocs.length, start + rows);
+
+		for (int i = start; i < endResult; i++) {
+
+			Document document = searcher.doc(scoreDocs[i].doc);
+			UserFile userFile = UserFileUtils.documentToUserFile(document);
+
+			String title = document.get("title");
+			String introduce = document.get("introduce");
+
+			// 如果这个字段当中没有包含搜索关键字，你对这个字段的值进行高亮，返回的是null
+			String hightitle = highlighter.getBestFragment(analyzer, "title",
+					title);
+			if (hightitle != null) {
+				userFile.setTitle(hightitle);
+			}
+			String highintroduce = highlighter.getBestFragment(analyzer,
+					"introduce", introduce);
+			if (highintroduce != null) {
+				userFile.setIntroduce(highintroduce);
+			}
+			userFilelist.add(userFile);
+		}
+
+		// return userFilelist;
+		return new PageResult(size, pageNo, pageSize, userFilelist);
+	}
+
+}

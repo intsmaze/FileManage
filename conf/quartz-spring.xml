@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    
+    
+   <!-- 注册一个普通bean -->
+   <bean id="quartzTask" class="cn.intsmaze.core.quartz.QuartzTask"></bean>
+   
+   
+   <!-- 1、制定任务信息信息 -->
+   <bean id="jobDetail1" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+   		   <!-- 设置执行对象 -->
+   		   <property name="targetObject" ref="quartzTask"></property>
+   		   <!-- 设置执行对象中对应的执行方法 -->
+   		   <property name="targetMethod" value="deletePastRecord"></property>
+   		   <!-- 是否可以同步执行；不可同步执行 -->
+   		   <property name="concurrent" value="false"></property>
+   </bean>
+   
+   
+   <!-- 2、制定任务执行时机（任务执行触发器） -->
+   <bean id="simplerTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+   		<!-- 设置任务详细 -->
+   		<property name="jobDetail" ref="jobDetail1"></property>
+   		<!-- 设置任务延迟执行时间 ；延迟2秒执行-->
+   		<property name="startDelay" value="2000"></property>
+   		<!-- 设置任务执行频率；执行频率为每6000秒执行一下 -->
+   		<property name="repeatInterval" value="6000000"></property>
+   </bean>
+   
+ 
+   <!-- 3、设置调度工厂 -->
+   <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+   		<property name="triggers">
+   			<list>
+   				 <ref bean="simplerTrigger"/>
+   			</list>
+   		</property>
+   </bean>
+   
+</beans>

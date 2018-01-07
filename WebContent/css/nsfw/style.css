@@ -1,0 +1,135 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*
+  公共
+*/
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td
+	{ 
+	margin:0px; 
+	padding:0px;
+	}
+html {
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size:100% auto;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size:12px;
+}
+
+fieldset,img {
+	border: none;
+}
+a{ text-decoration:none; color:#858585; font-size:12px;}
+a:hover{ font-size:12px; color:#55afee;}
+address,caption,cite,code,dfn,th,var {
+	font-style: normal;
+	font-weight: normal;
+}
+
+ol,ul,li {
+	list-style-type: none;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.fr{float:right!important; font:14px/40px \5fae\8f6f\96c5\9ed1; color:#bfbfbd;}
+.fl{float:left!important; padding-right:8px !important; font:12px/42px \5fae\8f6f\96c5\9ed1 !important; color:#5b5d5e !important; font-weight:normal !important;}
+.fl a{ font-size:12px; color:#5b5d5e;}
+.fl a:hover{ font-size:12px; color:#55afee;}
+.bfb{ width:100%; height:25px;}
+.clear{clear:both;display:block;overflow:hidden;visibility:hidden;width:0;height:1px; padding:0px;}
+.hide{display:none;}
+
+/* 导航 */
+.banner{width:1222px; height:51px; margin: 0 auto; background:#FFF; position:relative;}
+.menu{  width:1222px; height:51px; margin: 0 auto; background:url(../../images/nsfw/banner_bg.png) no-repeat; padding:0px; position: absolute;bottom: 3px;
+	right: 0px;
+	 z-index:9999}
+.menu_mz{
+	position: absolute;
+	bottom: -13px;
+	right: -72px;
+	width: 162px;
+	height: 132px;
+	background: url(../../images/nsfw/bosimao.png) no-repeat;
+}
+.menu ul{ width:1222px; margin:0px; padding:0px;}
+.menu li{ position:relative; float:left; width:150px; margin:0px;  height:51px; text-align:center;  color:#fff !important; background:url(../../images/nsfw/banner_xt.jpg) no-repeat right 4px;  font-weight: bold; font:16px/51px \5fae\8f6f\96c5\9ed1;  font-weight:700;  }
+.menu li a { color:#fff; margin:5px 0px; height:51px; font-size:16px; text-decoration:none;}
+.menu li b{ position: absolute; background:url(../../images/nsfw/banner_hover.png) no-repeat left top; left:0px; top: 0px; width:150px; height:51px; z-index:-1; font-weight: bold !important; color:#1375b2;
+	}
+.menu li a:hover{ background:url(../../images/nsfw/banner_hover.png) no-repeat left top; margin:0px !important; width:150px; height:51px; display:inline-block; color:#1375b2 !important;}
+.menu li.hover{ background:url(../../images/nsfw/banner_hover.png) no-repeat left top;  margin:0px; border:0px; width:150px; height:51px; display:inline-block; font-weight: bold !important; color:#1375b2;}
+.menu li.hover a{ color:#1375b2 !important; font-size:16px; font-weight: bold !important; font:16px/51px \5fae\8f6f\96c5\9ed1;}
+.menu li.hover a:hover{ color:#1375b2 !important; }
+.menu_date{ float:right  !important; font:13px/43px \5fae\8f6f\96c5\9ed1 !important; color:#fff; margin:0px !important; background: none !important; font-weight:normal !important; width:146px !important; padding-right:5px; }
+.top a{ font-size:12px; color:#fff;}
+.top a:hover{ font-size:12px; color:#1f1f1f;}
+
+.content {
+	background:url(../../images/nsfw/xsxs_bg.png) #FFF center bottom no-repeat;
+    height:694px;
+    margin: 0 auto;
+    padding: 8px 1px;
+    width: 1220px;
+}
+.left_lm{ background:url(../../images/nsfw/left_bj.png) no-repeat; width:203px; height:671px; margin:0 8px 0px 13px; float:left;}
+.left_bt{ background:url(../../images/nsfw/1.png) no-repeat; margin-left:26px; margin-top:18px; padding-left:38px;  font:18px/30px \5fae\8f6f\96c5\9ed1; color:#1e4851; font-weight: bold !important;}
+.left_lmlb{ width:161px; margin-left:25px; padding:0px; }
+.left_lmlb ul{ margin-top:30px; padding:0px; margin-left:0px;}
+.left_lmlb ul li{ background:url(../../images/nsfw/xslm_bg01.png) no-repeat; width:161px; height:33px; margin:0px; padding-bottom:15px; font:14px/33px \5fae\8f6f\96c5\9ed1; color:#515151; position:relative;}
+.left_lmlb ul li a{ font:14px/33px \5fae\8f6f\96c5\9ed1; padding-left:40px; margin:0px; width:121px; display:block; color:#515151;}
+.left_lmlb ul li b{
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: url(../../images/nsfw/icoBG.png) no-repeat;
+	left:15px;
+	top: 6px;
+}
+.left_lmlb ul li b.wjxx{ background-position: 2px 2px;}
+.left_lmlb ul li:hover b.wjxx{ background-position: -32px 2px;}
+.left_lmlb ul li b.sjxx{ background-position: 0px -22px;}
+.left_lmlb ul li:hover b.sjxx { background-position: -34px -22px;}
+.left_lmlb ul li b.zhks{ background-position: 0px -48px;}
+.left_lmlb ul li:hover b.zhks { background-position:-32px -48px;}
+.left_lmlb ul li b.ztks{ background-position: 0px -82px;}
+.left_lmlb ul li:hover b.ztks { background-position:-32px -82px;}
+.left_lmlb ul li b.nxks{ background-position: 0px -126px;}
+.left_lmlb ul li:hover b.nxks { background-position:-32px -126px;}
+
+/* 后台菜单 */
+.left_lmlb ul li b.xxzlgl{ background-position: 2px 2px;}
+.left_lmlb ul li:hover b.xxzlgl{ background-position: -32px 2px;}
+.left_lmlb ul li b.xxqkgl{ background-position: 0px -22px;}
+.left_lmlb ul li:hover b.xxqkgl { background-position: -34px -22px;}
+.left_lmlb ul li b.sjgl{ background-position: 0px -48px;}
+.left_lmlb ul li:hover b.sjgl { background-position:-32px -48px;}
+.left_lmlb ul li b.tkgl{ background-position: 0px -82px;}
+.left_lmlb ul li:hover b.tkgl { background-position:-32px -82px;}
+.left_lmlb ul li b.djgl{ background-position: 0px -82px;}
+.left_lmlb ul li:hover b.djgl { background-position:-32px -82px;}
+.left_lmlb ul li b.flgl{ background-position: 0px -126px;}
+.left_lmlb ul li:hover b.flgl { background-position:-32px -126px;}
+.left_lmlb ul li b.xxjfbz{ background-position: 0px -48px;}
+.left_lmlb ul li:hover b.xxjfbz { background-position:-32px -48px;}
+.left_lmlb ul li b.ksjfbz{ background-position: 0px -82px;}
+.left_lmlb ul li:hover b.ksjfbz { background-position:-32px -82px;}
+.left_lmlb ul li b.jftxbb{ background-position: 0px -126px;}
+.left_lmlb ul li:hover b.jftxbb { background-position:-32px -126px;}
+.left_lmlb ul li a:hover{ background:url(../../images/nsfw/xslm_bg02.png) no-repeat;  width:161px;  height:33px; margin:0px; display:inline-block; font:14px/33px \5fae\8f6f\96c5\9ed1; color:#009f00;}
+.left_lmlb ul li.hover{ background:url(../../images/nsfw/xslm_bg02.png) no-repeat; width:161px; height:33px; font:14px/30px \5fae\8f6f\96c5\9ed1; color:#009f00;}
+
+/* 尾部 */
+.foot{ width:1220px; height: 30px; padding-top:14px; margin: 0px auto; text-align:center; font-size:12px; color:#1e6cae;}

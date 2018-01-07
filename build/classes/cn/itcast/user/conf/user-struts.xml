@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="user-action" namespace="/user" extends="base-default">
+	
+		<action name="user_*" class="userAction" method="{1}">				
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+				image/jpeg,image/jpeg,image/jpeg,image/png
+				</param>	
+			</interceptor-ref>  			
+			<!-- 配置系统默认的拦截器 -->
+			<interceptor-ref name="defaultStack"/>									
+			<result name="input">/WEB-INF/jsp/user/editUI.jsp</result>
+			<result name="main">/WEB-INF/jsp/home/main.jsp</result>
+				
+			<result name="findUI">/WEB-INF/jsp/user/findUI.jsp</result>	
+			<result name="loginUI">/WEB-INF/jsp/user/loginUI.jsp</result>	
+			
+			<result name="home">/WEB-INF/jsp/home/home.jsp</result>
+			<result name="title">/WEB-INF/jsp/home/title.jsp</result>	
+								
+			<result name="registerUI">/WEB-INF/jsp/user/registerUI.jsp</result>									
+			<result name="success">/WEB-INF/jsp/useremail/activateAccount.jsp</result>	
+			<result name="error">/WEB-INF/jsp/useremail/error.jsp</result>							
+			<result name="{1}">/WEB-INF/jsp/user/{1}.jsp</result>						
+		</action>
+		
+				
+		<action name="registerUser" class="userAction" method="registerUser">		
+			<result name="input">/WEB-INF/jsp/user/registerUI.jsp</result>
+			<result name="email">/WEB-INF/jsp/useremail/activateAccount.jsp</result>		
+		</action>
+		
+		<action name="findUser" class="userAction" method="findUser">		
+			<result name="input">/WEB-INF/jsp/user/findUI.jsp</result>
+			<result name="email">/WEB-INF/jsp/useremail/modifyAccount.jsp</result>			
+		</action>
+		
+	</package>
+	
+	
+</struts>

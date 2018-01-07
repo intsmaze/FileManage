@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-11-8 19:23:40 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.intsmaze.emailsite.entity.EmailSite" table="EMAILSITE">
+        <id name="emailSiteId" type="java.lang.String">
+            <column name="EMAILSITEID" />
+            <generator class="uuid" />
+        </id>
+        <property name="emailName" type="java.lang.String">
+            <column name="EMAILNAME" />
+        </property>
+        <property name="emailSite" type="java.lang.String">
+            <column name="EMAILSITE" />
+        </property>
+    </class>
+</hibernate-mapping>

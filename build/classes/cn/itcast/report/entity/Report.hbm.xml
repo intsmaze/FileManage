@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="cn.itcast.report.entity.Report" table="REPORT">
+    
+        <id name="reportId" type="java.lang.String">
+            <column name="REPORTID" />
+            <generator class="uuid" />
+        </id>
+            
+
+         <many-to-one name="user" class="cn.itcast.user.entity.User" fetch="join">
+            <column name="USERID" />
+        </many-to-one>
+        
+         <many-to-one name="userFile" class="cn.itcast.file.entity.UserFile" fetch="join">
+            <column name="USERFILEID" />
+        </many-to-one>
+         
+        
+         <property name="reason" type="java.lang.String">
+            <column name="REASON" />
+        </property>
+        
+    </class>
+</hibernate-mapping>
